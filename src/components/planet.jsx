@@ -1,9 +1,9 @@
 import '../App.css';
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import Card from 'react-bootstrap/Card';
 
 function Planet(props) {
-    const [planet, setPlanet] = useState({name: props.name,population: props.pop});
+    const [planet] = useState({name: props.name,population: props.pop});
 
     return (
         <div>
