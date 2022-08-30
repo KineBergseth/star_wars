@@ -1,21 +1,15 @@
 import '../App.css';
 import {useState} from "react";
-import Card from 'react-bootstrap/Card';
+import placeholder from '../logo.svg'
 
 function Planet(props) {
-    const [planet] = useState({name: props.name,population: props.pop});
+    const [planet] = useState({name: props.name, population: props.pop});
 
     return (
         <div>
-            <Card>
-                <Card.Img variant="top" src="holder.js/100px160" />
-                <Card.Body>
-                    <Card.Title>{planet.name}</Card.Title>
-                    <Card.Text>
-                        population: {planet.population}
-                    </Card.Text>
-                </Card.Body>
-            </Card>
+            <img src={placeholder} alt={'placeholder'} width={150} height={150}/>
+            <p>{planet.name}</p>
+            <p>population: {planet.population}</p>
         </div>
     );
 }

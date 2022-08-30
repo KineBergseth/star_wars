@@ -1,7 +1,7 @@
 import '../App.css';
 import Planet from './planet'
 import {useEffect, useState} from "react";
-import {Col, Row} from "react-bootstrap";
+import {ListGroup} from "react-bootstrap";
 
 function Planets() {
     const [planets, setPlanets] = useState("");
@@ -11,8 +11,10 @@ function Planets() {
         fetch(`https://swapi.dev/api/planets/`)
             .then((response) =>
                 response.json())
-            .then((actualData) =>
-                setPlanets(actualData.results)
+            .then((data) => {
+                    setPlanets(data.results)
+                    console.log(data.results)
+                }
             )
             .catch((error) => {
                 console.log(error.message);
@@ -23,13 +25,15 @@ function Planets() {
     }, []);
 
     return (
-        <Row xs={1} md={4} className="g-4">
-            <Col>
-                {!loading && planets.map((planet, i) =>
+        <div>
+            <ListGroup>
+            {!loading && planets.map((planet, i) =>
+                <ListGroup.Item key={i}>
                     <Planet key={i} id={i} name={planet.name} pop={planet.population}/>
-                )}
-                </Col>
-        </Row>
+                </ListGroup.Item>
+            )}
+            </ListGroup>
+        </div>
     );
 }
 
